@@ -95,7 +95,22 @@ class TreeNode:
                     u.right = node
                 stack.append(node)
         return head
-    '''    
+    '''
+    '''
+    # Recursion
+    def constructFromPrePost(self, pre: List[int], post: List[int]) -> TreeNode:
+        if not post:
+            return None
+        elif len(post) == 1:
+            return TreeNode(pre.pop(0))
+        else:
+            root = TreeNode(pre.pop(0))
+            # print(root.val)
+            pos = post.index(pre[0])
+            root.left = self.constructFromPrePost(pre, post[:pos+1])
+            root.right = self.constructFromPrePost(pre, post[pos+1:-1])
+            return root  
+    '''  
             
 pre = [1,2,4,8,9,5,3,6,7]
 post = [8,9,4,5,2,6,7,3,1]
