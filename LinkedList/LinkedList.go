@@ -1,4 +1,4 @@
-package main
+package LinkedList
 
 import "fmt"
 
@@ -7,7 +7,7 @@ type LNode struct {
 	next *LNode
 }
 
-func createLinkedList(l []int) *LNode {
+func CreateLinkedList(l []int) *LNode {
 	var head *LNode = &LNode{} // 1 : Initialized
 	cur := head
 	for _, n := range l {
@@ -30,7 +30,7 @@ func createLinkedList(l []int) *LNode {
 	return head.next
 }
 
-func getLength(head *LNode) int {
+func GetLength(head *LNode) int {
 	n := 0
 	cur := head
 	for cur != nil {
@@ -40,7 +40,7 @@ func getLength(head *LNode) int {
 	return n
 }
 
-func (head *LNode) getLastNode() *LNode {
+func (head *LNode) GetLastNode() *LNode {
 	cur := head
 	for cur.next != nil {
 		cur = cur.next
@@ -48,12 +48,12 @@ func (head *LNode) getLastNode() *LNode {
 	return cur
 }
 
-func (head *LNode) insert(key int) {
+func (head *LNode) Insert(key int) {
 	node := LNode{}
 	node.val = key
 
 	if head != nil {
-		last := head.getLastNode()
+		last := head.GetLastNode()
 		last.next = &node
 	} else {
 		head.next = &node
@@ -61,12 +61,12 @@ func (head *LNode) insert(key int) {
 
 }
 
-func (head *LNode) deleteF() *LNode {
+func (head *LNode) DeleteF() *LNode {
 	head = head.next
 	return head
 }
 
-func printLL(head *LNode) {
+func PrintLL(head *LNode) {
 	cur := head
 	for cur != nil {
 		fmt.Print(cur.val)
@@ -78,22 +78,22 @@ func printLL(head *LNode) {
 	fmt.Println()
 }
 
-func main() {
-	vals := []int{1, 2, 3, 4, 5}
+// func main() {
+// 	vals := []int{1, 2, 3, 4, 5}
 
-	var root *LNode = createLinkedList(vals)
-	printLL(root)
-	root.insert(6)
-	printLL(root)
-	root = root.deleteF()
-	printLL(root)
+// 	var root *LNode = createLinkedList(vals)
+// 	printLL(root)
+// 	root.insert(6)
+// 	printLL(root)
+// 	root = root.deleteF()
+// 	printLL(root)
 
-	r := &LNode{}
-	for i := 1; i < 8; i++ {
-		go r.insert(i)
-	}
+// 	r := &LNode{}
+// 	for i := 1; i < 8; i++ {
+// 		go r.insert(i)
+// 	}
 
-	printLL(r.next)
-	// r.next = r.next.deleteF()
-	// printLL(r.next)
-}
+// 	printLL(r.next)
+// 	// r.next = r.next.deleteF()
+// 	// printLL(r.next)
+// }
