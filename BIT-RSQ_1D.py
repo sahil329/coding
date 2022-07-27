@@ -1,3 +1,4 @@
+# Good resource about understanding - https://www.youtube.com/watch?v=uSFzHCZ4E-8
 class BIT:
     def __init__(self,nums):
         self.n = len(nums)
